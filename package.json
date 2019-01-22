@@ -12,14 +12,15 @@
     "url": "git+https://github.com/achapman77/MERN-Template.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Adam Chapman",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/achapman77/MERN-Template/issues"
   },
   "homepage": "https://github.com/achapman77/MERN-Template#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",

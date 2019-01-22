@@ -1,1 +1,2 @@
-# MERN-Template
+# American Whitewater Scraper
+
