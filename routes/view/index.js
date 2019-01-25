@@ -9,7 +9,7 @@ router.get("/", function (req, res) {
     db.RiverSection
         .find({ saved: false })
         .then(function (riverSections) {
-            res.render("riverSections", { riverSections });
+            res.render("home", { riverSections });
         });
 });
 

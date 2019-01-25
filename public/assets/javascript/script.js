@@ -1,5 +1,4 @@
 $(function () {
-    alert("hello");
     
     $(".saveRiverSection").on("click", function () {
         const id = $(this).parents("li").data("riverSection-id");
