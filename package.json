@@ -25,6 +25,7 @@
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
     "mongoose": "^5.4.4",
+    "morgan": "^1.9.1",
     "tablesorter": "^2.31.1",
     "twilio": "^3.27.1"
   }

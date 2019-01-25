@@ -3,11 +3,41 @@
     {{> navbar}}
 </header>
 
-<div class="container-fluid">
-    <h1>American Whitewater</h1>
-</div>
 <div class="container-fluid river-container">
-    <h1>River Data</h1>
+    <ul class="unsaved">
+        {{#each riverSections}}
+            <li data-riverSection-id={{_id}}>
+                <div class="row" >
+                    <div class="col-2">
+                        {{this.riverName}}
+                    </div>
+                    <div class="col-2">
+                        {{this.riverSection}}
+                    </div>
+                    <div class="col-2">
+                        {{this.sectionClass}}
+                    </div>
+                    <div class="col-1">
+                        {{this.sectionCFS}}
+                    </div>
+                    <div class="col-1">
+                        {{this.changeCFS}}
+                    </div>
+                    <div class="col-2">
+                        {{this.recommendation}}
+                    </div>
+                    <div class="col-2">
+                        {{this.lastUpdates}}
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="saveRiverSection">Favorite</button>
+                    <button class="deleteRiverSection">Remove</button>
+                </div>
+            </li>
+        {{/each}}
+
+    </ul>
 </div>
 
 
@@ -15,4 +45,4 @@
 {{> footer}}
 </footer>
 
-<script src="../../assets/javascript/index.js"></script>
+

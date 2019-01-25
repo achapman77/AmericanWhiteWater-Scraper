@@ -1,44 +1,48 @@
-//Video Walkthrough here: https://www.youtube.com/watch?v=17-n9ImiWVc
+//Video Walkthrough here: https://codingbootcamp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d7104bad-dfed-43bc-bb91-a9dd016a984d
 
 //Require dependencies
 const express = require('express');
 const mongoose = require('mongoose');
-const expressHandlebars = require('express-handlebars');
-const bodyParser = require('body-parser');
+const exphbs = require('express-handlebars');
+const logger = require("morgan");
 
 //Set up port
 const PORT = process.env.PORT || 3000;
 
+// Instantiate our Express App
 const app = express();
 
-//Setup express router
-const router = express.Router();
+// Require our routes
+const routes = require("./routes")
 
-//Require routes file and pass Router object
-require('./config/routes')(router);
 
+//Middleware==========================================
+//Parse request body as JSON
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 //Designate public folder as static directory
-app.use(express.static(__dirname + '/public'));
+app.use(express.static("public"));
+
+// Use morgan logger for logging requests
+app.use(logger("dev"));
 
 //Connect Handlebars to Express App
-app.engine('handlebars', expressHandlebars({
-  defaultLayout: 'main'
-}));
-app.set('view engine', 'handlebars')
+app.engine("handlebars", exphbs({ defaultLayout: "main"}));
+app.set("view engine", "handlebars")
 
-//Use bodyParser
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+//Have every request go through our route middleware
+app.use(routes);
 
-//Have every request go through our router middleware
-app.use(router);
 
-//If deployed, use the deployed database.  Otherwis use the local mongo database
+// Database===========================================================
+// USUALLY USE THIS METHOD TO CONNECT TO LOCAL DATABASE === BETTER ERRORS
+//If deployed, use the deployed database.  Otherwise use the local mongo database
+// const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scraperStarter"
+
 // DB Config
 const db = require('./config/keys').mongoURI;
 
-// Connect to Mongo
+// Connect to Mongo mLabs directly  (Avoid this in future)
 mongoose
   .connect(db, {useNewUrlParser: true}) // Adding new mongo url parser
   .then(() => console.log('MongoDB Connected...'))

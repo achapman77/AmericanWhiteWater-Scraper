@@ -1,31 +1,43 @@
-const Note = require("../models/Note");
-const makeDate = require("../scripts/date");
+var db = require('../models');
 
 module.exports = {
-    get: (data, cb) => {
-        Note.find({
-            _riverSectionID: data._id
-        }, cb);
+    findAll: function (req, res) {
+        db.Note
+            .find()
+            .then(function (notes) {
+                res.json(notes);
+            });
     },
-    save: (data, cb) => {
-        const newNote = {
-            _riverSectionID: data._id,
-            date: makeDate(),
-            noteText: data.noteText
-        };
-
-        Note.create(newNote, (err, doc) => {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log(doc);
-                cb(doc);
-            }
-        });
+    findOne: function (req, res) {
+        db.Note
+            .findById(req.params.id)
+            .then(function (note) {
+                res.json(note);
+            });
     },
-    delete: (data, cb) => {
-        Note.remove({
-            _id: data._id
-        }, cb);
+    create: function (req, res) {
+        db.Note
+            .create({ text: req.body.text })
+            .then(function (note) {
+                return db.riverSection.findOneAndUpdate({ _id: req.body.riverSectionId }, { $set: { note: note._id } }) //Need another param here
+            })
+            .then(function (riverSection) {
+                res.json(riverSection);
+            });
+    },
+    update: function (req, res) {
+        db.Note
+            .findOneAndUpdate({ _id: req.params.id }, req.body)
+            .then(function (riverSection) {
+                res.json(riverSection);
+            });
+    },
+    delete: function (req, res) {
+        db.Note
+            .deleteOne({ _id: req.params.id })
+            .then(function (riverSection) {
+                res.json(riverSection);
+            });
     }
-}
+
+};
