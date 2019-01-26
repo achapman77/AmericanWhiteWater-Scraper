@@ -4,19 +4,16 @@ const Schema = mongoose.Schema;
 
 const riverSectionSchema = new Schema({
     riverName: {
-        type: String,
-        required: true
+        type: String
     },
     riverSection: {
-        type: String,
-        required: true
+        type: String
     },
     riverSectionLink: {
         type: String
     },
     sectionClass: {
-        type: String,
-        required: true
+        type: String
     },
     sectionCFS: {
         type: String
@@ -29,6 +26,10 @@ const riverSectionSchema = new Schema({
     },
     lastUpdated: {
         type: String
+    },
+    saved: {
+        type: Boolean,
+        default: false
     }
 });
 

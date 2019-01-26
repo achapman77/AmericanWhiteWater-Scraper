@@ -1,8 +1,8 @@
 $(function () {
     
     $(".saveRiverSection").on("click", function () {
-        const id = $(this).parents("li").data("riverSection-id");
-
+        const id = $(this).parents("tr").data("river-section-id");
+        console.log(id)
         $.ajax({
             method: "PUT",
             url: `/api/riverSections/${id}`,
@@ -13,7 +13,7 @@ $(function () {
     });
 
     $(".deleteRiverSection").on("click", function () {
-        const id = $(this).parents("li").data("riverSection-id");
+        const id = $(this).parents("tr").data("river-section-id");
         
         $.ajax({
             method: "DELETE",
@@ -22,6 +22,8 @@ $(function () {
             window.location.assign("/");
         });
     });
+
+    $("form").hide()
 
     $(".editNote, .addNote").on("click", function () {
         $(this).siblings("form").show();
@@ -32,7 +34,8 @@ $(function () {
         event.preventDefault();
         const id = $(this).siblings(".note").data("note-id");
         const text = $(this).children("input").val().trim();
-
+        console.log(id)
+        console.log(text);
         $.ajax({
             method: "PUT",
             url: `/api/notes/${id}`,
@@ -45,14 +48,15 @@ $(function () {
 
     $(".addForm").on("submit", function (event) {
         event.preventDefault();
-        const riverSectionId = $(this).parents("li").data("riverSection-id");
+        const riverSectionID = $(this).parents("tr").data("river-section-id");
         const text = $(this).children("input").val().trim();
-        
+        console.log(riverSectionID)
+        console.log(text);
         $.ajax({
             method: "POST",
             url: `/api/notes/`,
             data: { 
-                riverSectionId,
+                riverSectionID,
                 text
             }
         }).then(function (response) {
@@ -61,5 +65,22 @@ $(function () {
 
     })
 
+    $(".scrape-new").on("click", function () {
+        $.ajax({
+            method: "GET",
+            url: "/api/riverSections/scrape"
+        }).then(function (response) {
+            location.reload();
+        })
+    })
+
+    $(".clear-all").on("click", function () {
+        $.ajax({
+            method: "GET",
+            url: "/api/riverSections/clear"
+        }).then(function (response) {
+            location.reload();
+        })
+    })
 
 });

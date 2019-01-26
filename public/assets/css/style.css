@@ -1,0 +1,98 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #212529
+}
+.container-fluid {
+    padding: 0;
+}
+table {
+    width: 100%;
+    margin: 0 auto;
+}
+
+th {
+    height:3rem !important;
+    vertical-align: middle !important;
+}
+
+td {
+    height:3rem !important;
+    vertical-align: middle !important;
+}
+
+.w4 {
+    width: 4rem;
+}
+
+.w5 {
+    width: 5rem;
+}
+.w6 {
+    width: 6rem;
+}
+.w7 {
+    width: 7rem;
+}
+.w8 {
+    width: 8rem;
+}
+.w9 {
+    width: 9rem;
+}
+.w10 {
+    width: 10rem;
+}
+.w11 {
+    width: 11rem;
+}
+.w12 {
+    width: 12rem;
+}
+.w13 {
+    width: 13rem;
+}
+.w14 {
+    width: 14rem;
+}
+.w16 {
+    width: 16rem;
+}
+.w18 {
+    width: 18rem;
+}
+.w20 {
+    width: 20rem;
+}
+.w22 {
+    width: 22rem;
+}
+
+.navbar {
+    padding: 0;
+}
+
+.navbar-collapse {
+    display: flex;
+    justify-content: flex-end;
+}
+
+li {
+    display: flex;
+    flex-direction: column;
+    height: 5rem;
+    justify-content: center
+}
+
+.nav-item {
+    text-align: center;
+    width: 8rem;
+}
+
+.refresh {
+    background-color: rgba(0, 0, 0, 0.479);
+}
+
+.clear {
+    background-color: rgba(175, 4, 4, 0.842);
+}

@@ -16,6 +16,7 @@ module.exports = {
             })
             .then(function () {
                 res.send("All river sections and notes deleted");
+                console.log("rivers and notes cleared")
             })
     },
     // api/riverSections/scrape
@@ -29,7 +30,7 @@ module.exports = {
                 const $ = cheerio.load(response.data);
   
                 // With cheerio, find each h4-tag with the class "headline-link" and loop through the results
-                $("tr.river").each(function(i, element) {
+                $("tr.river").each(function (i, element) {
             
                     const riverSection = {};
 
@@ -42,17 +43,23 @@ module.exports = {
                     riverSection.recommendation = $(element).find("td.rc:nth-child(5)").text().replace(/(\r\n\t|\n|\r\t)/gm, "").replace(/[^- ]*\-(\S*)/, "").trim();
                     riverSection.lastUpdated = $(element).find("td.gauge_info").next("td").next("td").text().replace(/(\r\n\t|\n|\r\t)/gm, "");
                     
+                    // console.log(riverSection)
 
                     db.RiverSection
-                        .create(riverSection);
+                        .create(riverSection)
                 });
-            });
-        res.json("Scrape completed")
+                
+            })
+            .then(function (riverSections) {
+                res.json(riverSections);
+                console.log("scrape complete")
+            })
+        
     },
     // api/riverSections/all
     findAll: function (req, res) {
         db.RiverSection
-            .find().sort({ riverName: 1 })
+            .find().sort({ riverName: 1 }).sort({ riverSection: 1 })
             .then(function (riverSections) {
                 res.json(riverSections);
             });
@@ -80,6 +87,9 @@ module.exports = {
         db.RiverSection
             .deleteOne({
                 _id: req.params.id
+            })
+            .then(function (riverSection) {
+                res.json(riverSection)
             })
     }
 }

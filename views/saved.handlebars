@@ -3,28 +3,57 @@
     {{> navbar}}
 </header>
 
-<div class="container-fluid river-container">
-    <ul class="saved">
-        {{#each riverSections}}
-            <li data-riverSection-id={{_id}}>
-                {{#if note}}
-                    <div class="note" data-note-id={{note._id}}>Notes: {{note.text}}</div>
-                    <button class="editNote">Edit Note</button>
-                    <form class="editForm">
-                        <input class="text" placeholder="Add notes here"/>
-                        <button type="submit">Submit Note</button>
-                    </form>
-                {{/if}}
-                {{#unless note}}
-                    <button class="addNote">Add Note</button>
-                    <form class="addForm">
-                        <input class="text" placeholder="Add notes here"/>
-                        <button type="submit">Submit Note</button>
-                    </form>
-                {{/unless}}
-            </li>
-        {{/each}}
-    </ul>
+<div class="container-fluid">
+    <table class="table table-striped table-bordered table-dark table-hover table-sm table-responsive">
+        <thead>
+            <tr>
+            <th class="w10" scope="col">River Name</th>
+            <th class="w18" scope="col">Section</th>
+            <th class="w7" scope="col">Class</th>
+            <th class="w7" scope="col">CFS</th>
+            <th class="w7" scope="col">delta</th>
+            <th class="w10" scope="col">Recommendation</th>
+            <th class="w5" scope="col">Last Updated</th>
+            <th class="w3 text-center" scope="col" >Save</th>
+            <th class="w3 text-center" scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+           {{#each riverSections}} 
+                <tr data-river-section-id={{_id}}>
+                    <td>{{this.riverName}}</td>
+                    <td>{{this.riverSection}}</td>
+                    <td>{{this.sectionClass}}</td>
+                    <td>{{this.sectionCFS}}</td>
+                    <td>{{this.changeCFS}}</td>
+                    <td>{{this.recommendation}}</td>
+                    <td>{{this.lastUpdated}}</td>
+                    <td class="text-center w4"><button class="btn btn-primary saveRiverSection">+</button></td>
+                    <td class="text-center w4"><button class="btn btn-danger deleteRiverSection">-</button></td>
+                </tr>
+                <tr data-river-section-id={{_id}}>
+                    <td colspan="9">
+                    {{#if this.note}}
+                        <div class="note" data-note-id={{note._id}}>Notes: {{note.noteText}}</div>
+                        <button class="editNote">Edit Note</button>
+                        <form class="editForm">
+                            <input class="text" placeholder="Add notes here"/>
+                            <button type="submit">Submit Note</button>
+                        </form>
+                    {{/if}}
+                    {{#unless this.note}}
+                        <button class="addNote">Add Note</button>
+                        <form class="addForm">
+                            <input class="text" placeholder="Add notes here"/>
+                            <button type="submit">Submit Note</button>
+                        </form>
+                    {{/unless}}
+                    </td>
+                    
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
 </div>
 
 

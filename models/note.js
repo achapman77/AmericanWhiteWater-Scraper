@@ -7,7 +7,6 @@ const noteSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "RiverSection"
     },
-    date: String,
     noteText: String
 });
 

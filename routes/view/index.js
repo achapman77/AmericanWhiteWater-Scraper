@@ -7,8 +7,9 @@ const db = require("../../models");
 
 router.get("/", function (req, res) {
     db.RiverSection
-        .find({ saved: false })
+        .find().sort({ riverName: 1 }).sort({ riverSection: 1 })
         .then(function (riverSections) {
+            // console.log(riverSections)
             res.render("home", { riverSections });
         });
 });
@@ -17,8 +18,8 @@ router.get("/saved", function (req, res) {
     db.RiverSection
         .find({ saved: true })
         .populate("note")
-        .then(function (riverSections) {
-            res.render("saved", { riverSections });
+        .then(function (riverSections, notes) {
+            res.render("saved", { riverSections, notes });
         });
 });
 

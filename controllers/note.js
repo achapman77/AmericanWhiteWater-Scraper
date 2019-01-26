@@ -17,9 +17,14 @@ module.exports = {
     },
     create: function (req, res) {
         db.Note
-            .create({ text: req.body.text })
+            .create({ noteText: req.body.text })
             .then(function (note) {
-                return db.riverSection.findOneAndUpdate({ _id: req.body.riverSectionId }, { $set: { note: note._id } }) //Need another param here
+                return db.RiverSection.findOneAndUpdate({ _id: req.body.riverSectionID }, { $set: { note: note._id } }, { new: true }, (err, doc) => {
+                    if (err) {
+                        console.log("Something went wrong attaching note to riverSection")
+                    }
+                    console.log(doc)
+                }) 
             })
             .then(function (riverSection) {
                 res.json(riverSection);
@@ -27,7 +32,12 @@ module.exports = {
     },
     update: function (req, res) {
         db.Note
-            .findOneAndUpdate({ _id: req.params.id }, req.body)
+            .findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }, (err, doc) => {
+                if (err) {
+                    console.log("Something went wrong updating note")
+                }
+                console.log(doc)
+            })
             .then(function (riverSection) {
                 res.json(riverSection);
             });
