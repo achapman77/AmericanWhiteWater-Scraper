@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const riverSectionSchema = new Schema({
+const RiverSectionSchema = new Schema({
     riverName: {
         type: String
     },
@@ -41,6 +41,6 @@ const riverSectionSchema = new Schema({
       ]
 });
 
-const RiverSection = mongoose.model("RiverSection", riverSectionSchema);
+const RiverSection = mongoose.model("RiverSection", RiverSectionSchema);
 
 module.exports = RiverSection;

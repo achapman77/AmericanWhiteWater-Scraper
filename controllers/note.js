@@ -17,7 +17,7 @@ module.exports = {
     },
     create: function (req, res) {
         db.Note
-            .create({ noteText: req.body.text })
+            .create({ body: req.body.text })
             .then(function (note) {
                 return db.RiverSection.findOneAndUpdate({ _id: req.body.riverSectionID }, { $set: { notes: note._id } }, { new: true }, (err, doc) => {
                     if (err) {

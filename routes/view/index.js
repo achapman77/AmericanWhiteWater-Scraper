@@ -1,10 +1,9 @@
 //routes/view/index.js
-//
 
 const router = require("express").Router();
 const db = require("../../models");
 
-
+//This route renders the homepage
 router.get("/", function (req, res) {
     db.RiverSection
         .find().sort({ riverName: 1 }).sort({ riverSection: 1 })
@@ -14,6 +13,7 @@ router.get("/", function (req, res) {
         });
 });
 
+//This route renders the saved page
 router.get("/saved", function (req, res) {
     db.RiverSection
         .find({ saved: true })

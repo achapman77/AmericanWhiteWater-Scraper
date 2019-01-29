@@ -4,12 +4,13 @@ html, body {
     background-color: #212529
 }
 .container-fluid {
+    width: 100%;
     padding: 0;
 }
-table {
-    width: 100%;
+/* table {
+    width: 100% !important;
     margin: 0 auto;
-}
+} */
 
 th {
     height:3rem !important;
@@ -21,52 +22,20 @@ td {
     vertical-align: middle !important;
 }
 
-.w4 {
-    width: 4rem;
+.w5 {
+    width: 5%;
 }
 
-.w5 {
-    width: 5rem;
-}
-.w6 {
-    width: 6rem;
-}
-.w7 {
-    width: 7rem;
-}
-.w8 {
-    width: 8rem;
-}
-.w9 {
-    width: 9rem;
-}
 .w10 {
-    width: 10rem;
+    width: 10%;
 }
-.w11 {
-    width: 11rem;
-}
-.w12 {
-    width: 12rem;
-}
-.w13 {
-    width: 13rem;
-}
-.w14 {
-    width: 14rem;
-}
-.w16 {
-    width: 16rem;
-}
-.w18 {
-    width: 18rem;
+.w15 {
+    width: 15%;
 }
 .w20 {
-    width: 20rem;
+    width: 20%;
 }
-.w22 {
-    width: 22rem;
-}
+
 
 .navbar {
     padding: 0;
