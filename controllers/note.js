@@ -19,11 +19,11 @@ module.exports = {
         db.Note
             .create({ noteText: req.body.text })
             .then(function (note) {
-                return db.RiverSection.findOneAndUpdate({ _id: req.body.riverSectionID }, { $set: { note: note._id } }, { new: true }, (err, doc) => {
+                return db.RiverSection.findOneAndUpdate({ _id: req.body.riverSectionID }, { $set: { notes: note._id } }, { new: true }, (err, doc) => {
                     if (err) {
                         console.log("Something went wrong attaching note to riverSection")
                     }
-                    console.log(doc)
+                    console.log("Note Create: ", doc)
                 }) 
             })
             .then(function (riverSection) {
@@ -36,7 +36,7 @@ module.exports = {
                 if (err) {
                     console.log("Something went wrong updating note")
                 }
-                console.log(doc)
+                console.log("Note Update: ", doc)
             })
             .then(function (riverSection) {
                 res.json(riverSection);

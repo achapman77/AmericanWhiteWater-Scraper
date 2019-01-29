@@ -23,7 +23,7 @@ $(function () {
         });
     });
 
-    $("form").hide()
+    // $("form").hide()
 
     $(".editNote, .addNote").on("click", function () {
         $(this).siblings("form").show();
@@ -34,14 +34,15 @@ $(function () {
         event.preventDefault();
         const id = $(this).siblings(".note").data("note-id");
         const text = $(this).children("input").val().trim();
-        console.log(id)
-        console.log(text);
+        console.log("Note Edit ID: ", id)
+        console.log("Note edit text: ", text);
         $.ajax({
             method: "PUT",
             url: `/api/notes/${id}`,
             data: { text }
         }).then(function (response) {
-            location.reload();
+            console.log("Add form res:", response);
+            // location.reload();
         })
 
     });
@@ -50,8 +51,8 @@ $(function () {
         event.preventDefault();
         const riverSectionID = $(this).parents("tr").data("river-section-id");
         const text = $(this).children("input").val().trim();
-        console.log(riverSectionID)
-        console.log(text);
+        console.log("Note Add: ",riverSectionID)
+        console.log("Note Add: ", text);
         $.ajax({
             method: "POST",
             url: `/api/notes/`,
@@ -60,7 +61,8 @@ $(function () {
                 text
             }
         }).then(function (response) {
-            location.reload();
+            console.log("Add form res:", response);
+            // location.reload();
         })
 
     })
