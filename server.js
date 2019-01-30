@@ -39,6 +39,9 @@ app.use(routes);
 //If deployed, use the deployed database.  Otherwise use the local mongo database
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scraperStarter"
 
+mongoose
+  .connect(MONGODB_URI, { useNewUrlParser: true })
+  .then(() => console.log('MongoDB Connected...'))
 // DB Config
 // const db = require('./config/keys').mongoURI;
 
