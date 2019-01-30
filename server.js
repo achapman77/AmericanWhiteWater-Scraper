@@ -37,16 +37,16 @@ app.use(routes);
 // Database===========================================================
 // USUALLY USE THIS METHOD TO CONNECT TO LOCAL DATABASE === BETTER ERRORS
 //If deployed, use the deployed database.  Otherwise use the local mongo database
-// const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scraperStarter"
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scraperStarter"
 
 // DB Config
-const db = require('./config/keys').mongoURI;
+// const db = require('./config/keys').mongoURI;
 
 // Connect to Mongo mLabs directly  (Avoid this in future)
-mongoose
-  .connect(db, {useNewUrlParser: true}) // Adding new mongo url parser
-  .then(() => console.log('MongoDB Connected...'))
-  .catch(err => console.log(err));
+// mongoose
+//   .connect(db, {useNewUrlParser: true}) 
+//   .then(() => console.log('MongoDB Connected...'))
+//   .catch(err => console.log(err));
 
 //Listen on the PORT
 app.listen(PORT, function () {
