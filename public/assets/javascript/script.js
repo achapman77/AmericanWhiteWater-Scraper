@@ -25,14 +25,14 @@ $(function () {
 
     // $("form").hide()
 
-    $(".editNote, .addNote").on("click", function () {
-        $(this).siblings("form").show();
-        $(this).hide();
-    });
+    // $(".editNote, .addNote").on("click", function () {
+    //     $(this).siblings("form").show();
+    //     $(this).hide();
+    // });
 
     $(".editForm").on("submit", function (event) {
         event.preventDefault();
-        const id = $(this).siblings(".note").data("note-id");
+        const id = $(this).data("note-id");
         const text = $(this).children("input").val().trim();
         console.log("Note Edit ID: ", id)
         console.log("Note edit text: ", text);
@@ -42,7 +42,7 @@ $(function () {
             data: { text }
         }).then(function (response) {
             console.log("Add form res:", response);
-            // location.reload();
+            location.reload();
         })
 
     });
@@ -62,7 +62,7 @@ $(function () {
             }
         }).then(function (response) {
             console.log("Add form res:", response);
-            // location.reload();
+            location.reload();
         })
 
     })
@@ -72,7 +72,7 @@ $(function () {
             method: "GET",
             url: "/api/riverSections/scrape"
         }).then(function (response) {
-            location.reload();
+            window.location.assign("/");
         })
     })
 
@@ -81,7 +81,7 @@ $(function () {
             method: "GET",
             url: "/api/riverSections/clear"
         }).then(function (response) {
-            location.reload();
+            window.location.assign("/");
         })
     })
 

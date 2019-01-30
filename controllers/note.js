@@ -32,7 +32,7 @@ module.exports = {
     },
     update: function (req, res) {
         db.Note
-            .findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }, (err, doc) => {
+            .findOneAndUpdate({ _id: req.params.id }, { $set: { body: req.body.text } }, { upsert: true }, (err, doc) => {
                 if (err) {
                     console.log("Something went wrong updating note")
                 }
@@ -51,3 +51,10 @@ module.exports = {
     }
 
 };
+
+ // Create a new note
+//   create: function(req, res) {
+//     db.Note.create(req.body).then(function(dbNote) {
+//       res.json(dbNote);
+//     });
+//   },

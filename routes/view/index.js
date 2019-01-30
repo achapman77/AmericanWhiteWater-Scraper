@@ -17,7 +17,7 @@ router.get("/", function (req, res) {
 router.get("/saved", function (req, res) {
     db.RiverSection
         .find({ saved: true })
-        .populate("note")
+        .populate("notes")
         .then(function (riverSections, notes) {
             res.render("saved", { riverSections, notes });
         });

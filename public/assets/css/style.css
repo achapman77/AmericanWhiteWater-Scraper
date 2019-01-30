@@ -11,7 +11,9 @@ html, body {
     width: 100% !important;
     margin: 0 auto;
 } */
-
+.hide {
+    opacity: 0;
+}
 th {
     height:3rem !important;
     vertical-align: middle !important;
@@ -39,8 +41,14 @@ td {
 
 .navbar {
     padding: 0;
+    position: fixed;
+    top: 0;
+    width: 100%
 }
+.navbar-brand {
+    font-size: 3rem;
 
+}
 .navbar-collapse {
     display: flex;
     justify-content: flex-end;
@@ -62,6 +70,50 @@ li {
     background-color: rgba(0, 0, 0, 0.479);
 }
 
+
 .clear {
     background-color: rgba(175, 4, 4, 0.842);
+}
+
+.navbar{
+    padding-left: 1.25rem;
+}
+
+.container-fluid{
+    margin-top: 5rem;
+    padding: 0 0.75rem;
+}
+
+.notesRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+.notesRow form {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 35%;
+}
+
+.notesRow button {
+    width: 10rem;
+}
+
+.text{
+    width: 20rem;
+    height: 2.5rem;
+    border-radius: 5px;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    padding-left: 1rem;
+}
+
+.notesRow .note {
+    font-size: 1.75rem;
+    color: #E0A82C;
+    
+    margin: 0 auto;
 }
