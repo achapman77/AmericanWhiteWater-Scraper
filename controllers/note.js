@@ -52,9 +52,3 @@ module.exports = {
 
 };
 
- // Create a new note
-//   create: function(req, res) {
-//     db.Note.create(req.body).then(function(dbNote) {
-//       res.json(dbNote);
-//     });
-//   },
