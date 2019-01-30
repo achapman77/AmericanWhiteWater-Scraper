@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/achapman77/MERN-Template.git"
+    "url": "git+https://github.com/achapman77/AmericanWhiteWater-Scraper.git"
   },
   "keywords": [],
   "author": "Adam Chapman",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/achapman77/MERN-Template/issues"
+    "url": "https://github.com/achapman77/AmericanWhiteWater-Scraper.git/issues"
   },
-  "homepage": "https://github.com/achapman77/MERN-Template#readme",
+  "homepage": "https://github.com/achapman77/AmericanWhiteWater-Scraper.git#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
