@@ -2,9 +2,10 @@
 
 ## Overview
 
-This app scrapes the https://www.americanwhitewater.org/content/River/state-summary/state/CO/ site which used to look crappy, but actually just improved!  However, this app isolates just the Colorado river sections as well as enables saving favorites and adding notes.
-
+This app scrapes the https://www.americanwhitewater.org/content/River/state-summary/state/CO/ site for waterflow data.  
+However, this app isolates just the Colorado river sections and enables saving favorite river sections along with adding notes.  
 Demo the App here: https://co-whitewater-scraper.herokuapp.com/
+
 
 ### Home Page - All River Data
 ![home-page](https://user-images.githubusercontent.com/5178260/51964226-1e297700-2423-11e9-9db4-69419e62c088.png)
